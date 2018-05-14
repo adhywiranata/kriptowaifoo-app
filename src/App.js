@@ -29,6 +29,7 @@ class App extends Component {
       avatarUrl,
       value,
     }));
+
     this.setState({ creator, characters, balance });
   }
 
@@ -37,19 +38,40 @@ class App extends Component {
       <Web3Provider>
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">KriptoWaifoo</h1>
+            <div>
+              <h1 className="App-title"><strong>Lapak</strong>Waifu <strong>:)</strong></h1>
+            </div>
+            <nav>
+              <ul>
+                <a href="#"><li>Top Waifus</li></a>
+                <a href="#"><li>New Waifus</li></a>
+                <a href="#"><li>Loley</li></a>
+              </ul>
+            </nav>
           </header>
           <p className="App-intro">
             Bid Your Waifu!
           </p>
-          <div>
+          <div className="card-wrapper">
             {this.state.characters.map(character => {
               return (
-                <div key={character.id} style={{ display: 'inline-block', width: '25%', padding: 15, margin: 15, border: '1px solid rgba(0,0,0,0.1)' }}>
+                <div
+                  key={character.id}
+                  className="card">
+                  <img src={character.avatarUrl} />
                   <h3>{character.name}</h3>
-                  PRICE: {web3.utils.fromWei(character.value, 'ether')} ETH<br />
-                  <img src={character.avatarUrl} height="300" />
+                  <div className="value">{web3.utils.fromWei(character.value, 'ether')} ETH</div>
+                </div>
+              );
+            })}
+            {this.state.characters.map(character => {
+              return (
+                <div
+                  key={character.id}
+                  className="card">
+                  <img src={character.avatarUrl} />
+                  <h3>{character.name}</h3>
+                  <div className="value">{web3.utils.fromWei(character.value, 'ether')} ETH</div>
                 </div>
               );
             })}
