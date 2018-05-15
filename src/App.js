@@ -5,6 +5,9 @@ import { Web3Provider } from 'react-web3';
 import web3 from './web3';
 import characterFactory from './characterFactory';
 
+import Header from './components/Header';
+import Card from './components/Card';
+
 class App extends Component {
   state = {
     creator: null,
@@ -35,38 +38,17 @@ class App extends Component {
 
   render() {
     return (
-      <Web3Provider>
-        <div className="App">
-          <header className="App-header">
-            <div>
-              <h1 className="App-title"><strong>Lapak</strong>Waifu <strong>:)</strong></h1>
-            </div>
-            <nav>
-              <ul>
-                <a href="#"><li>Top Waifus</li></a>
-                <a href="#"><li>New Waifus</li></a>
-                <a href="#"><li>Loley</li></a>
-              </ul>
-            </nav>
-          </header>
+      <div className="App">
+        <Header />
+        <Web3Provider>
           <p className="App-intro">
             Bid Your Waifu!
           </p>
           <div className="card-wrapper">
-            {this.state.characters.map(character => {
-              return (
-                <div
-                  key={character.id}
-                  className="card">
-                  <img src={character.avatarUrl} />
-                  <h3>{character.name}</h3>
-                  <div className="value">{web3.utils.fromWei(character.value, 'ether')} ETH</div>
-                </div>
-              );
-            })}
+            {this.state.characters.map(character => <Card character={character} />)}
           </div>
-        </div>
-      </Web3Provider>
+        </Web3Provider>
+      </div>
     );
   }
 }

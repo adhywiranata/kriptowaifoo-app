@@ -99,7 +99,7 @@ nav li .active {
   justify-content: space-between;
   align-items: center;
   padding-bottom: 20px;
-  opacity: 0.7;
+  /* opacity: 0.7; */
 }
 
 .card img {
@@ -109,9 +109,24 @@ nav li .active {
 }
 
 .card .value {
+  background-color: orange;
+  padding: 5px 10px;
+  color: #FFF;
+}
+
+.card button {
   background-color: #D24D57;
   padding: 5px 10px;
   color: #FFF;
+  border: 0;
+  font-size: 1.3rem;
+  cursor: pointer;
+  border-radius: 8px;
+  outline: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  text-transform: uppercase;
 }
 
 .card:nth-child(odd):hover {
