@@ -15,6 +15,7 @@ class App extends Component {
     balance: '',
     value: '',
     isLoading: false,
+    showBuyModal: true,
   }
 
   async componentDidMount() {
@@ -36,6 +37,10 @@ class App extends Component {
     this.setState({ creator, characters, balance });
   }
 
+  toggleModal = () => {
+    this.setState({ showBuyModal: !this.state.showBuyModal });
+  }
+
   render() {
     return (
       <div className="App">
@@ -45,8 +50,19 @@ class App extends Component {
             Bid Your Waifu!
           </p>
           <div className="card-wrapper">
-            {this.state.characters.map(character => <Card character={character} />)}
+            {this.state.characters.map(character => <Card character={character} toggleModal={this.toggleModal} />)}
           </div>
+          {this.state.showBuyModal && (
+            <div>
+              <div onClick={this.toggleModal} className="App-overlay"></div>
+              <div className="App-modal">
+                <h4>Buy this Character</h4>
+                <input type="text" value="5000" /> ETH
+                <button>BUY</button>
+                <img src="https://lh6.googleusercontent.com/0g9_JEL0ItT1qUU9NI-gZhVaT913XY2JrvtMmTBRx9auBjU98nK6PJQF12K_RMu3DIK3Gef61AecLpDAJ1I=w1441-h804-rw" style={{ height: '45%', position: 'absolute', bottom: 0, right: 0}} />
+              </div>
+            </div>
+          )}
         </Web3Provider>
       </div>
     );
