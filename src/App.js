@@ -90,7 +90,7 @@ class App extends Component {
             <div>
               <div onClick={this.toggleModal} className="App-overlay"></div>
               <div className="App-modal">
-                <h4>Buy {this.state.selectedCharacter.name} ?</h4>
+                <h4>Buy {this.state.selectedCharacter.name}?</h4>
                 <p>You can buy this character starting from the current value + 0.001 ETH</p>
                 <form onSubmit={this.buySelectedCharacterValue}>
                   <div>
