@@ -4,6 +4,7 @@
   font-family: 'Nanum Gothic', sans-serif;
   color: #555;
   padding-top: 150px;
+  padding-bottom: 150px;
 }
 
 .App-header {
@@ -66,7 +67,8 @@ nav li .active {
 }
 
 .App-intro {
-  font-size: large;
+  font-size: 2rem;
+  margin: 60px;
 }
 
 @keyframes App-logo-spin {
@@ -84,16 +86,14 @@ nav li .active {
 
 .card {
   /* flex: 1; */
-  width: 250px;
+  width: 23%;
   padding: 0px;
   display: inline-block;
-  border: 1px solid rgba(0,0,0,0.1);
-  margin: 0px 0px;
+  margin: 3px;
   transition: 0.2s;
   background: #FFF;
   border-radius: 5px;
-  box-shadow: 1px 5px 6px 0px rgba(0,0,0,0.1);
-  /* transform: rotate3d(1, -1, 1, -3deg); */
+  box-shadow: 1px 1px 16px 0px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -104,6 +104,8 @@ nav li .active {
 
 .card img {
   width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .card .value {
@@ -112,9 +114,18 @@ nav li .active {
   color: #FFF;
 }
 
-.card:hover {
-  border: 1px solid rgba(0,0,0,0.2);
-  transition: 0.5s;
+.card:nth-child(odd):hover {
+  transition: 0.3s;
   transform: translateY(-10px);
   opacity: 1;
+  transform: scale(1.1) rotate(1deg) translateY(10px);
+  z-index: 998;
+}
+
+.card:nth-child(even):hover {
+  transition: 0.3s;
+  transform: translateY(-10px);
+  opacity: 1;
+  transform: scale(1.1) rotate(-1deg) translateY(-10px);
+  z-index: 998;
 }

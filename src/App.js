@@ -64,17 +64,6 @@ class App extends Component {
                 </div>
               );
             })}
-            {this.state.characters.map(character => {
-              return (
-                <div
-                  key={character.id}
-                  className="card">
-                  <img src={character.avatarUrl} />
-                  <h3>{character.name}</h3>
-                  <div className="value">{web3.utils.fromWei(character.value, 'ether')} ETH</div>
-                </div>
-              );
-            })}
           </div>
         </div>
       </Web3Provider>
