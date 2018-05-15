@@ -1,7 +1,7 @@
 import React from 'react';
 import web3 from '../web3';
 
-export default ({ character, toggleModal }) => (
+export default ({ character, pickCharacter }) => (
   <div
     key={character.id}
     className="card">
@@ -10,7 +10,7 @@ export default ({ character, toggleModal }) => (
     <div className="value">
       {web3.utils.fromWei(character.value, 'ether')} ETH
     </div>
-    <button onClick={toggleModal}>
+    <button onClick={pickCharacter}>
       Get me !
     </button>
   </div>
