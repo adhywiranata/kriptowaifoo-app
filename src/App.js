@@ -98,6 +98,7 @@ class App extends Component {
                   </div>
                   <button>BUY</button>
                 </form>
+                <span style={{opacity: 0.7}}>note: your money will be transferred to the previous owner of this character.</span>
                 <img src="https://lh6.googleusercontent.com/0g9_JEL0ItT1qUU9NI-gZhVaT913XY2JrvtMmTBRx9auBjU98nK6PJQF12K_RMu3DIK3Gef61AecLpDAJ1I=w1441-h804-rw" style={{ height: '45%', position: 'absolute', bottom: 0, right: 0}} />
               </div>
             </div>
