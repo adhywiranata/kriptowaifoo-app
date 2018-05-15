@@ -20,6 +20,7 @@ class App extends Component {
       id: null,
       name: null,
       value: 0,
+      actualValue: 0,
     },
   }
 
@@ -36,7 +37,7 @@ class App extends Component {
       name,
       anime,
       avatarUrl,
-      value,
+      value: Number(web3.utils.fromWei(value, 'ether')),
     }));
 
     this.setState({ creator, characters, balance });
@@ -48,8 +49,30 @@ class App extends Component {
 
   pickCharacter = (character) => {
     this.setState({
-      selectedCharacter: {...character},
+      selectedCharacter: {...character, actualValue: character.value },
     }, this.toggleModal);
+  }
+
+  setSelectedCharacterValue = (e) => {
+    if(!isNaN(Number(e.target.value))) {
+      this.setState({
+        selectedCharacter: {
+          ...this.state.selectedCharacter,
+          value: e.target.value,
+        },
+      });
+    }
+  }
+
+  buySelectedCharacterValue = (e) => {
+    e.preventDefault();
+    const value = this.state.selectedCharacter.value;
+    const currentValue = this.state.selectedCharacter.actualValue + 0.001;
+    if(value < currentValue) {
+      alert('CANNOT BE LOWER!');
+    } else {
+      alert('THIS IS YOURS!');
+    }
   }
 
   render() {
@@ -69,10 +92,12 @@ class App extends Component {
               <div className="App-modal">
                 <h4>Buy {this.state.selectedCharacter.name} ?</h4>
                 <p>You can buy this character starting from the current value + 0.001 ETH</p>
-                <div>
-                  <input type="text" value={Number(web3.utils.fromWei(this.state.selectedCharacter.value, 'ether')) + 0.001} /> ETH
-                </div>
-                <button>BUY</button>
+                <form onSubmit={this.buySelectedCharacterValue}>
+                  <div>
+                    <input type="text" onChange={this.setSelectedCharacterValue} value={this.state.selectedCharacter.value} /> ETH
+                  </div>
+                  <button>BUY</button>
+                </form>
                 <img src="https://lh6.googleusercontent.com/0g9_JEL0ItT1qUU9NI-gZhVaT913XY2JrvtMmTBRx9auBjU98nK6PJQF12K_RMu3DIK3Gef61AecLpDAJ1I=w1441-h804-rw" style={{ height: '45%', position: 'absolute', bottom: 0, right: 0}} />
               </div>
             </div>

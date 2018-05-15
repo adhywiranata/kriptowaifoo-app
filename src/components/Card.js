@@ -8,7 +8,7 @@ export default ({ character, pickCharacter }) => (
     <img src={character.avatarUrl} />
     <h3>{character.name}</h3>
     <div className="value">
-      {web3.utils.fromWei(character.value, 'ether')} ETH
+      {character.value} ETH
     </div>
     <button onClick={pickCharacter}>
       Get me !
