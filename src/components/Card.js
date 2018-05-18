@@ -10,6 +10,7 @@ export default ({ character, pickCharacter }) => (
     <div className="value">
       {character.value} ETH
     </div>
+    <span style={{ fontSize: 12 }}>owner: {character.owner.slice(0, 10)}...</span>
     <button onClick={pickCharacter}>
       Get me !
     </button>
