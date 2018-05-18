@@ -78,14 +78,23 @@ class App extends Component {
     }
   };
 
-  buySelectedCharacterValue = e => {
-    e.preventDefault();
+  buySelectedCharacterValue = async event => {
+    event.preventDefault();
     const value = this.state.selectedCharacter.value;
-    const currentValue = this.state.selectedCharacter.actualValue + 0.001;
-    if (value < currentValue) {
+    const actualValue = this.state.selectedCharacter.actualValue + 0.001;
+    const accounts = await web3.eth.getAccounts();
+    if (value < actualValue) {
       alert("CANNOT BE LOWER!");
     } else {
-      alert("THIS IS YOURS!");
+      try {
+        await characterFactory.methods
+        .buyCharacter(this.state.selectedCharacter.id)
+        .send({ value: web3.utils.toWei(value, 'ether'), from: accounts[0] });
+      } catch (err) {
+        alert('ERROR: ' + err.message);
+      }
+
+      alert('this char is urs, ' + accounts[0]);
     }
   };
 
