@@ -10,6 +10,7 @@ import Card from "./components/Card";
 
 class App extends Component {
   state = {
+    loggedUserAccount: null,
     creator: null,
     characters: [],
     balance: "",
@@ -26,6 +27,12 @@ class App extends Component {
 
   async componentDidMount() {
     // const creator = await characterFactory.methods.creator().call();
+    // get current logged user account
+    const loggedUserAccount = await web3.eth.getAccounts();
+    this.setState({
+      loggedUserAccount,
+    });
+
     const creator = "";
     const charactersIds = await characterFactory.methods
       .getCharactersIds()
@@ -101,7 +108,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        <Header user={this.state.loggedUserAccount} />
         <Web3Provider>
           <p className="App-intro">Bid Your Waifu!</p>
           <div className="card-wrapper">
