@@ -30,7 +30,7 @@ class App extends Component {
     // get current logged user account
     const loggedUserAccount = await web3.eth.getAccounts();
     this.setState({
-      loggedUserAccount,
+      loggedUserAccount: loggedUserAccount[0],
     });
 
     const creator = "";
@@ -117,6 +117,7 @@ class App extends Component {
                 character={character}
                 pickCharacter={() => this.pickCharacter(character)}
                 toggleModal={this.toggleModal}
+                loggedUser={this.state.loggedUserAccount}
               />
             ))}
           </div>
