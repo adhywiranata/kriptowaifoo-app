@@ -7,9 +7,10 @@ export default ({ user }) => (
     </div>
     <nav>
       <ul>
-        <a href="#"><li>Top Waifus</li></a>
-        <a href="#"><li>New Waifus</li></a>
-        <a href="#"><li>Loley</li></a>
+        <a href="#"><li>Trending</li></a>
+        <a href="#"><li>New</li></a>
+        <a href="#"><li>Lolis</li></a>
+        <a href="#"><li>My Waifus</li></a>
       </ul>
       <span style={{ paddingLeft: 20, borderLeft: '3px solid white' }}>
         Welcome, {user}
